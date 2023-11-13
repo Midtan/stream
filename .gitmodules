@@ -1,0 +1,3 @@
+[submodule "simple-whip-server"]
+	path = simple-whip-server
+	url = https://github.com/meetecho/simple-whip-server.git

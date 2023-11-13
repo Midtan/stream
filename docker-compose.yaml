@@ -1,0 +1,19 @@
+version: '3.5'
+services:
+  janus:
+    container_name: janus
+    image: 'canyan/janus-gateway:latest'
+    command: ["/usr/local/bin/janus", "-F", "/usr/local/etc/janus"]
+    volumes:
+      - "./janus.conf/:/usr/local/etc/janus/"
+  whip:
+    container_name: whip
+    restart: unless-stopped
+    image: node:12-alpine
+    user: "node"
+    working_dir: /home/node/whip
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./simple-whip-server:/home/node/whip
+    command: "npm start"
